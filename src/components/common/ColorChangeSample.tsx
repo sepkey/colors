@@ -5,7 +5,7 @@ import Button from '../common/Button';
 type Props = {
   hexColor: string;
   className?: string;
-  onClick: MouseEventHandler<HTMLButtonElement>;
+  onClick?: MouseEventHandler<HTMLButtonElement>;
 };
 
 const ColorChangeSample = ({ hexColor, className, onClick }: Props) => {

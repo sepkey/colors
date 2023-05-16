@@ -6,7 +6,7 @@ type Props = {
   size?: string;
   className?: string;
   style?: CSSProperties;
-  onClick: MouseEventHandler<HTMLButtonElement>;
+  onClick?: MouseEventHandler<HTMLButtonElement>;
 };
 
 const Button = ({

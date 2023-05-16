@@ -5,7 +5,7 @@ type Props = {
 
 const ColorSample = ({ hexColor }: Props) => {
   return (
-    <section className="flex flex-col  items-center gap-2 h-20">
+    <section className="flex flex-col  items-center gap-2 h-28">
       <div
         className="w-full h-full rounded border border-slate-500"
         style={{ backgroundColor: hexColor }}

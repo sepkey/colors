@@ -15,6 +15,7 @@ const ColorSelect = ({ hexColor, onChange, label = 'Color' }: Props) => {
         label={label}
         id="color-input"
         type="color"
+        className="h-9"
         onChange={onChange}
         value={hexColor}
       />

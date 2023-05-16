@@ -2,6 +2,7 @@ import './App.css';
 import ColorPicker from './components/colorPicker';
 import { useReducer } from 'react';
 import { initialState, colorReducer } from './components/lib/reducer';
+import AdjustColor from './components/adjustColor';
 
 function App() {
   const [{ hexColor }, dispatch] = useReducer(colorReducer, initialState);
@@ -13,6 +14,7 @@ function App() {
           dispatch({ type: 'update-hex-color', payload: { hexColor: e.target.value } })
         }
       />
+      <AdjustColor hexColor={hexColor} />
     </div>
   );
 }

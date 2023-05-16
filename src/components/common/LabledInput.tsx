@@ -7,7 +7,7 @@ type Props = {
   value: string | number;
   type?: string;
   className?: string;
-  onChange: ChangeEventHandler<HTMLInputElement>;
+  onChange?: ChangeEventHandler<HTMLInputElement>;
 };
 
 const LabledInput = ({ label, value, id, type = 'text', className, onChange }: Props) => {

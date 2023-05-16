@@ -1,7 +1,22 @@
-import React from 'react';
-
-const reducer = () => {
-  return <div>reducer</div>;
+type State = {
+  hexColor: string;
 };
 
-export default reducer;
+type HexColorAction = {
+  type: 'update-hex-color';
+  payload: {
+    hexColor: string;
+  };
+};
+
+export const initialState: State = {
+  hexColor: '#a2e2c6',
+};
+
+export const colorReducer = function (state: State, action: HexColorAction) {
+  if ((action.type = 'update-hex-color')) {
+    const { hexColor } = action.payload;
+    return { ...state, hexColor };
+  }
+  return state;
+};

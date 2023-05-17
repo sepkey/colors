@@ -4,6 +4,7 @@ import { useReducer } from 'react';
 import { initialState, colorReducer } from './lib/reducer';
 import AdjustColor from './components/adjustColor';
 import RelatedColors from './components/RelatedColors';
+import SavedColors from './components/savedColors';
 
 function App() {
   const [{ hexColor }, dispatch] = useReducer(colorReducer, initialState);
@@ -17,6 +18,7 @@ function App() {
       />
       <AdjustColor hexColor={hexColor} />
       <RelatedColors hexColor={hexColor} />
+      <SavedColors hexColor={hexColor} />
     </div>
   );
 }

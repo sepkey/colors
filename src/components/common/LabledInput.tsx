@@ -10,8 +10,6 @@ type Props = {
   onChange?: ChangeEventHandler<HTMLInputElement>;
 };
 
-// type Props = ComponentPropsWithoutRef<'input'> & { label: string };
-
 const LabledInput = ({ label, value, id, type = 'text', className, onChange }: Props) => {
   id = useId() + id;
   return (
@@ -23,10 +21,12 @@ const LabledInput = ({ label, value, id, type = 'text', className, onChange }: P
         value={value}
         className={clsx('w-full ', className)}
         onChange={onChange}
-        readOnly
+        readOnly={!onChange}
       />
     </div>
   );
 };
 
 export default LabledInput;
+
+// type Props = ComponentPropsWithoutRef<'input'> & { label: string };

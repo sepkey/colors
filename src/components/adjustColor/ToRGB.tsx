@@ -1,17 +1,44 @@
+import { Dispatch } from 'react';
+import { AdjustColorActions } from '../../lib/reducer';
 import LabledInput from '../common/LabledInput';
 import { hex } from 'color-convert';
 
 type Props = {
   hexColor: string;
+  dispatch: Dispatch<AdjustColorActions>;
 };
 
-const ToRGB = ({ hexColor }: Props) => {
-  const [red, green, blue] = hex.rgb(hexColor);
+const ToRGB = ({ hexColor, dispatch }: Props) => {
+  const [r, g, b] = hex.rgb(hexColor);
+  const handleUpdate = ({ red = r, green = g, blue = b }) => {
+    console.log({ red, green, blue });
+    dispatch({ type: 'update-rgb-color', payload: { rgb: [red, green, blue] } });
+  };
   return (
     <div className="flex gap-2">
-      <LabledInput label="R" value={red} type="text" className="border" />
-      <LabledInput label="G" value={green} type="text" className="border" />
-      <LabledInput label="B" value={blue} type="text" className="border" />
+      <LabledInput
+        label="R"
+        value={r}
+        type="number"
+        className="border"
+        onChange={(e) => {
+          handleUpdate({ red: e.target.valueAsNumber, green: g, blue: b });
+        }}
+      />
+      <LabledInput
+        label="G"
+        value={g}
+        type="number"
+        className="border"
+        onChange={(e) => handleUpdate({ red: r, green: e.target.valueAsNumber, blue: b })}
+      />
+      <LabledInput
+        label="B"
+        value={b}
+        type="number"
+        className="border"
+        onChange={(e) => handleUpdate({ red: r, green: g, blue: e.target.valueAsNumber })}
+      />
     </div>
   );
 };

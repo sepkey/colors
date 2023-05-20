@@ -16,7 +16,7 @@ function App() {
           dispatch({ type: 'update-hex-color', payload: { hexColor: e.target.value } })
         }
       />
-      <AdjustColor hexColor={hexColor} />
+      <AdjustColor dispatch={dispatch} hexColor={hexColor} />
       <RelatedColors hexColor={hexColor} />
       <SavedColors hexColor={hexColor} />
     </div>

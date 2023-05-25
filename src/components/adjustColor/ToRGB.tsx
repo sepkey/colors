@@ -1,7 +1,7 @@
 import { Dispatch } from 'react';
-import { AdjustColorActions } from '../../lib/reducer';
 import LabledInput from '../common/LabledInput';
 import { hex } from 'color-convert';
+import { AdjustColorActions } from '../../lib/reducer';
 
 type Props = {
   hexColor: string;
@@ -11,7 +11,6 @@ type Props = {
 const ToRGB = ({ hexColor, dispatch }: Props) => {
   const [r, g, b] = hex.rgb(hexColor);
   const handleUpdate = ({ red = r, green = g, blue = b }) => {
-    console.log({ red, green, blue });
     dispatch({ type: 'update-rgb-color', payload: { rgb: [red, green, blue] } });
   };
   return (

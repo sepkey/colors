@@ -1,4 +1,4 @@
-import { rgb } from 'color-convert';
+import { rgb, hsl, hsv, cmyk } from 'color-convert';
 
 // type HexColor = `#${string}`;
 //alternative
@@ -26,11 +26,38 @@ type UpdateRgbColorAction = {
   };
 };
 
+type UpdateHslColorAction = {
+  type: 'update-hsl-color';
+  payload: {
+    hsl: [number, number, number];
+  };
+};
+
+type UpdateHsvColorAction = {
+  type: 'update-hsv-color';
+  payload: {
+    hsv: [number, number, number];
+  };
+};
+
+type UpdateCmykColorAction = {
+  type: 'update-cmyk-color';
+  payload: {
+    cmyk: [number, number, number, number];
+  };
+};
+
 export const initialState: State = {
   hexColor: '#a2e2c6',
 };
 
-export type AdjustColorActions = UpdateHexColorAction | UpdateRgbColorAction;
+export type AdjustColorActions =
+  | UpdateHexColorAction
+  | UpdateRgbColorAction
+  | UpdateHslColorAction
+  | UpdateHsvColorAction
+  | UpdateCmykColorAction;
+
 export const colorReducer = function (state: State, action: AdjustColorActions) {
   if (action.type === 'update-hex-color') {
     const { hexColor } = action.payload;
@@ -40,6 +67,19 @@ export const colorReducer = function (state: State, action: AdjustColorActions) 
     const hexColor = '#' + rgb.hex(action.payload.rgb); //stupid solution
     // const hexColor = rgb.hex(action.payload.rgb);
 
+    return { ...state, hexColor };
+  }
+  if (action.type === 'update-hsl-color') {
+    const hexColor = '#' + hsl.hex(action.payload.hsl);
+
+    return { ...state, hexColor };
+  }
+  if (action.type === 'update-hsv-color') {
+    const hexColor = '#' + hsv.hex(action.payload.hsv);
+    return { ...state, hexColor };
+  }
+  if (action.type === 'update-cmyk-color') {
+    const hexColor = '#' + cmyk.hex(action.payload.cmyk);
     return { ...state, hexColor };
   }
   return state;

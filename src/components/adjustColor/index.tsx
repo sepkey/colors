@@ -16,9 +16,9 @@ const AdjustColors = ({ hexColor, dispatch }: Props) => {
     <div className="flex flex-col gap-3 w-full">
       <h3>Adjust Colors</h3>
       <ToRGB hexColor={hexColor} dispatch={dispatch} />
-      <ToHSL hexColor={hexColor} />
-      <ToHSV hexColor={hexColor} />
-      <ToCMYK hexColor={hexColor} />
+      <ToHSL hexColor={hexColor} dispatch={dispatch} />
+      <ToHSV hexColor={hexColor} dispatch={dispatch} />
+      <ToCMYK hexColor={hexColor} dispatch={dispatch} />
       <NamedColor hexColor={hexColor} />
     </div>
   );
